@@ -1,44 +1,40 @@
 <template>
   <v-app>
-    <v-app-bar
+    <v-navigation-drawer
       app
-      color="primary"
-      dark
+      class="pt-6"
+      color="grey lighten-3"
+      permanent
+      width="65px"
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+      class="ml-1 mb-9"
+      fab
+      dark
+      color="indigo"
+      to="/"
+    >
+      <v-icon dark large>
+        mdi-home-circle-outline
+      </v-icon>
+    </v-btn>
+      <v-btn
+      class="ml-1 mb-9"
+      fab
+      dark
+      color="indigo"
+      to="/about"
+    >
+      <v-icon dark large>
+        mdi-information
+      </v-icon>
+    </v-btn>
+    </v-navigation-drawer>
 
     <v-main>
-      <router-view/>
+      <v-container fluid>
+        <router-view/>
+      </v-container>
     </v-main>
   </v-app>
 </template>
