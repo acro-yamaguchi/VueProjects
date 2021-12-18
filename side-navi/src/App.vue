@@ -11,22 +11,33 @@
       class="ml-1 mb-9"
       fab
       dark
-      color="indigo"
+      color="blue-grey darken-3"
       to="/"
     >
       <v-icon dark large>
         mdi-home-circle-outline
       </v-icon>
     </v-btn>
-      <v-btn
+    <v-btn
       class="ml-1 mb-9"
       fab
       dark
-      color="indigo"
+      color="blue-grey darken-3"
       to="/about"
     >
       <v-icon dark large>
         mdi-information
+      </v-icon>
+    </v-btn>
+    <v-btn
+      class="ml-1 mb-9"
+      fab
+      dark
+      color="blue-grey darken-3"
+      to="/time"
+    >
+      <v-icon dark large>
+        mdi-clock-time-three-outline
       </v-icon>
     </v-btn>
     </v-navigation-drawer>
