@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .time {
-  background-image: url("~@/assets/img/BackImg.png");
+  background-image: url("~@/assets/img/BackImg.jpg");
   background-size: cover;
   height: 100vh;
   display: flex;
