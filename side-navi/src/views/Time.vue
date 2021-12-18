@@ -24,7 +24,8 @@ export default {
 
 <style scoped>
 .time {
-  background-image: url("~@/assets/img/maxresdefault.jpg");
+  background-image: url("~@/assets/img/BackImg.png");
+  background-size: cover;
   height: 100vh;
   display: flex;
   align-items: center;
