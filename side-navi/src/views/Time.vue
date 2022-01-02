@@ -56,5 +56,8 @@ export default {
 
 .time h1 {
   color: aliceblue;
+  margin-left: auto;
+  margin-right: 15%;
+  margin-top: 10%;
 }
 </style>
