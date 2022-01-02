@@ -11,8 +11,9 @@ export default {
   }),
 
   mounted : function(){
-    this.getDate();
-  },
+    let self = this;
+    setInterval(function(){ self.getDate() }, 1000);
+    },
   
   methods: {
     getDate(){
