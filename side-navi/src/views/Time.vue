@@ -1,6 +1,7 @@
 <template>
   <div class="time ma-n3">
       <h1>{{ now }}</h1>
+      <h1 class="time-reverse">{{ now }}</h1>
   </div>
 </template>
 
@@ -50,6 +51,7 @@ export default {
   background-size: cover;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -58,6 +60,11 @@ export default {
   color: aliceblue;
   margin-left: auto;
   margin-right: 15%;
-  margin-top: 10%;
+  margin-top: 15%;
+}
+
+.time-reverse {
+  transform: scaleY(-1);
+  opacity: 0.1;
 }
 </style>
