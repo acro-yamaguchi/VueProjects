@@ -1,4 +1,6 @@
 <template>
+<div id="app">
+  <p>SCORE: {{ score }}</p>
   <div id='stage'>
 		<div
     class='cell'
@@ -9,6 +11,7 @@
       fruit: fruit_index === i - 1, }">
     </div>
 	</div>
+</div>
 </template>
 
 <script>
@@ -22,7 +25,7 @@
         x: 4,
         y: 2,
       },
-      body_length: 3,
+      body_length: 1,
       body_indexes: [],
     },
       fruit_index: 1,
@@ -43,6 +46,9 @@
     snake_head_index() {
 			return this.snake.head_pos.y * this.stage_length + this.snake.head_pos.x
 		},
+    score() {
+      return this.snake.body_length - 1
+    }
   },
 
   methods: {
