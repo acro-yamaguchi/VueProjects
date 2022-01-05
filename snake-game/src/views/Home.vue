@@ -1,6 +1,12 @@
 <template>
   <div id='stage'>
-		<div class='cell' v-for="i in stage_size" :key="i" :class="{ head: snake_head_index === i - 1 }"></div>
+		<div
+    class='cell'
+    v-for="i in stage_size"
+    :key="i"
+    :class="{ head: snake_head_index === i - 1,
+      body: snake.body_indexes.includes(i - 1), }">
+    </div>
 	</div>
 </template>
 
@@ -14,7 +20,9 @@
       head_pos: {
         x: 0,
         y: 0,
-      }
+      },
+      body_length: 3,
+      body_indexes: [],
     }
   }),
 
@@ -40,6 +48,14 @@
     },
 
     move_snake(){
+      if(this.snake.body_indexes.length >= this.snake.body_length) {
+        this.snake.body_indexes.shift()
+      }
+
+      if(this.snake.body_indexes.length < this.snake.body_length) {
+        this.snake.body_indexes.push(this.snake_head_index)
+      }
+
       switch(this.snake.direction){
         case '↑': this.snake.head_pos.y--; break
         case '↓': this.snake.head_pos.y++; break
@@ -79,5 +95,9 @@
 
 .cell.head {
 	background: dimgray;
+}
+
+.cell.body {
+  background: darkgray;
 }
 </style>
