@@ -19,6 +19,8 @@
   }),
 
   created(){
+    document.addEventListener('keydown', this.on_keydown)
+
     this.time_goes()
   },
 
@@ -44,7 +46,16 @@
         case '←': this.snake.head_pos.x--; break
         case '→': this.snake.head_pos.x++; break
       }
-    }
+    },
+
+    on_keydown(event) {
+      switch(event.key) {
+        case 'ArrowUp':		this.snake.direction = '↑'; break
+        case 'ArrowRight':	this.snake.direction = '→'; break
+        case 'ArrowDown':	this.snake.direction = '↓'; break
+        case 'ArrowLeft':	this.snake.direction = '←'; break
+	}
+    },
   }
 };
 </script>
