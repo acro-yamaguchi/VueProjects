@@ -11,6 +11,7 @@
       fruit: fruit_index === i - 1, }">
     </div>
 	</div>
+  <p v-if="is_gameover">GAME OVER</p>
 </div>
 </template>
 
@@ -44,15 +45,27 @@
        return this.stage_length * this.stage_length
     },
     snake_head_index() {
+      if(this.is_frameout) return null
 			return this.snake.head_pos.y * this.stage_length + this.snake.head_pos.x
 		},
     score() {
       return this.snake.body_length - 1
-    }
+    },
+    is_frameout() {
+      const {x, y} = this.snake.head_pos
+      return x < 0 || this.stage_length <= x || y < 0 || this.stage_length <= y
+    },
+    is_collided() {
+      return this.snake.body_indexes.includes(this.snake_head_index)
+    },
+    is_gameover() {
+      return this.is_frameout || this.is_collided
+    },
   },
 
   methods: {
     time_goes(){
+      if(this.is_gameover) return //ゲームオーバーなら何もしない＝ヘビが進まない
       this.move_snake()
       setTimeout(this.time_goes, this.snake.speed)
     },
