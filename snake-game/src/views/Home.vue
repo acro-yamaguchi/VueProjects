@@ -9,12 +9,18 @@
   data: () => ({
     stage_length: 10,
     snake: {
+      speed: 400,
+      direction: '→',
       head_pos: {
         x: 0,
         y: 0,
       }
     }
   }),
+
+  created(){
+    this.time_goes()
+  },
 
   computed: {
     stage_size(){
@@ -23,6 +29,22 @@
     snake_head_index() {
 			return this.snake.head_pos.y * this.stage_length + this.snake.head_pos.x
 		},
+  },
+
+  methods: {
+    time_goes(){
+      this.move_snake()
+      setTimeout(this.time_goes, this.snake.speed)
+    },
+
+    move_snake(){
+      switch(this.snake.direction){
+        case '↑': this.snake.head_pos.y--; break
+        case '↓': this.snake.head_pos.y++; break
+        case '←': this.snake.head_pos.x--; break
+        case '→': this.snake.head_pos.x++; break
+      }
+    }
   }
 };
 </script>
