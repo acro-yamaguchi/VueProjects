@@ -5,7 +5,8 @@
     v-for="i in stage_size"
     :key="i"
     :class="{ head: snake_head_index === i - 1,
-      body: snake.body_indexes.includes(i - 1), }">
+      body: snake.body_indexes.includes(i - 1),
+      fruit: fruit_index === i - 1, }">
     </div>
 	</div>
 </template>
@@ -18,15 +19,18 @@
       speed: 400,
       direction: '→',
       head_pos: {
-        x: 0,
-        y: 0,
+        x: 4,
+        y: 2,
       },
       body_length: 3,
       body_indexes: [],
-    }
+    },
+      fruit_index: 1,
   }),
 
   created(){
+    this.ramdomize_fruit_index()
+
     document.addEventListener('keydown', this.on_keydown)
 
     this.time_goes()
@@ -70,8 +74,20 @@
         case 'ArrowRight':	this.snake.direction = '→'; break
         case 'ArrowDown':	this.snake.direction = '↓'; break
         case 'ArrowLeft':	this.snake.direction = '←'; break
-	}
+      }
     },
+
+    ramdomize_fruit_index() {
+      this.fruit_index = Math.floor(Math.random() * this.stage_size)
+    },
+  },
+  watch: {
+    snake_head_index(newValue) {
+      if(newValue === this.fruit_index) {
+        this.snake.body_length++
+        this.ramdomize_fruit_index()
+      }
+    }
   }
 };
 </script>
@@ -91,6 +107,10 @@
 	height: 30px;
 	margin: 2px;
 	background: whitesmoke;
+}
+
+.cell.fruit {
+  background: orangered;
 }
 
 .cell.head {
