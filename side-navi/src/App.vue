@@ -40,6 +40,17 @@
         mdi-clock-time-three-outline
       </v-icon>
     </v-btn>
+    <v-btn
+      class="ml-1 mb-9"
+      fab
+      dark
+      color="blue-grey darken-3"
+      to="/menu"
+    >
+      <v-icon dark large>
+        mdi-menu-open
+      </v-icon>
+    </v-btn>
     </v-navigation-drawer>
 
     <v-main>
