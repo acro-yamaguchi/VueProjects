@@ -11,7 +11,11 @@
       fruit: fruit_index === i - 1, }">
     </div>
 	</div>
-  <p v-if="is_gameover">GAME OVER</p>
+  <p v-if="is_gameover">
+    GAME OVER<br>
+    <v-btn onclick="location.reload()">RETRY</v-btn>
+  </p>
+  
 </div>
 </template>
 
@@ -36,6 +40,7 @@
     this.ramdomize_fruit_index()
 
     document.addEventListener('keydown', this.on_keydown)
+    document.addEventListener('keyup', this.on_keyup)
 
     this.time_goes()
   },
@@ -49,7 +54,7 @@
 			return this.snake.head_pos.y * this.stage_length + this.snake.head_pos.x
 		},
     score() {
-      return this.snake.body_length - 1
+      return (this.snake.body_length - 1) * 100
     },
     is_frameout() {
       const {x, y} = this.snake.head_pos
@@ -93,6 +98,12 @@
         case 'ArrowRight':	this.snake.direction = '→'; break
         case 'ArrowDown':	this.snake.direction = '↓'; break
         case 'ArrowLeft':	this.snake.direction = '←'; break
+        case ' ':	this.snake.speed = 150; break
+      }
+    },
+    on_keyup(event) {
+      switch(event.key) {
+        case ' ':	this.snake.speed = 400; break
       }
     },
 
@@ -119,6 +130,10 @@
   grid-gap: 2px;
   justify-content: center;
   margin-top: 12px;
+}
+
+#app {
+  text-align: center;
 }
 
 .cell {
