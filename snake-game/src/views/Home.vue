@@ -110,6 +110,13 @@
     ramdomize_fruit_index() {
       this.fruit_index = Math.floor(Math.random() * this.stage_size)
     },
+
+    is_smartPhone() {
+      var ua = navigator.userAgent
+      if (!(ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0 || ua.indexOf('Mobile') > 0 )) {
+        return true
+      }
+    }
   },
   watch: {
     snake_head_index(newValue) {
